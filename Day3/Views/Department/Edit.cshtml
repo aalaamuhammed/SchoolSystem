@@ -1,0 +1,53 @@
+﻿@model Day3.Models.DepartmentCoursesViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<h4 class="text-primary">Edit Department</h4>
+<div class="row">
+    <div>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Department.DeptId" />
+            <div class="form-group">
+                <label asp-for="Department.DeptName" class="control-label"></label>
+                <input asp-for="Department.DeptName" class="form-control" />
+                <span asp-validation-for="Department.DeptName" class="text-danger"></span>
+            </div>
+             <br/>
+             <span>
+              Courses in Department (select to remove)
+            </span>
+            <input type="hidden" value="@Model.Department.DeptId" name="id"/>
+            <select class="form-select" multiple name="coursesInDept">
+                @foreach (var item in Model.CoursesInDept)
+                {
+                    <option value="@item.CrsId">@item.CrsName</option>
+                }
+            </select>
+           <!-- <input type="submit" class="btn btn-primary my-2 " value="change"/>-->
+            <br/>
+           <span>
+                Other Courses (select to add)
+            </span>
+
+            <select class="form-select" multiple name="coursesOutDept">
+             @foreach (var item in Model.CoursesOutDept)
+                {
+                    <option value="@item.CrsId">@item.CrsName</option>
+                }
+            </select>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<!--
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+-->
+
+

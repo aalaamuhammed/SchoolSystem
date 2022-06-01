@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Student>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+   
+    ViewBag.Title = "Home";
+}
+
+        <a href="/student/create" class="btn btn-primary mb-3">Create Student</a>
+      
+
+        <table class="table table-bordered table-hover">
+           <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>Name</th>
+                   <th>Age</th>
+                   <th>DeptName</th>
+               </tr>
+           </thead>
+           <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>@item.Age</td>
+                    <td>@item.Department.DeptName</td>
+                    <td>
+                        <a class="btn btn-success" href="/student/details/@item.Id">Details</a>
+                        <a class="btn btn-warning" href="/student/delete/@item.Id">Delete</a>
+                        <a class="btn btn-danger" href="/student/edit/@item.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+       </table>
+   

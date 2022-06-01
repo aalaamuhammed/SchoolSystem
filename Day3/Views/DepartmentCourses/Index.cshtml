@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<select asp-items="ViewBag.depts" name="deptid" id="deptid">
+    <option>Select Department</option>
+</select>
+<div id="courses">
+
+</div>
+<script>
+    $("#deptid").change(function(){
+        var id = $("#deptid").val();
+        $('#courses').load("/DepartmentCourses/GetCourses/"+id)
+    })
+</script>
